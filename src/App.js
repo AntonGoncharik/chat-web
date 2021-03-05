@@ -15,41 +15,41 @@ const App = () => {
     <div className="app__container">
       <div className="app__header">Header</div>
       <div className="app__sidebar">
-          <Sidebar/>       
-        </div>
+        <Sidebar />
+      </div>
       <div className="app__content">
-      <Switch>
-      <Route path="/dashboard">
-        <Dashboard />
-      </Route>
-      <Route path="/dialogues">
-        <Dialogues />
-      </Route>
-      <Route path="/users">
-        <Users />
-      </Route>
-    </Switch>
+        <Switch>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/dialogues">
+            <Dialogues />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+        </Switch>
       </div>
     </div>
   );
 
   const PrivateRoute = ({ component: Component, ...rest }) => (
-      <Route
-        {...rest}
-        render={(props) => {
-          if (userStore.data.auth) {
-            return <Component {...props} />
-          }
-          return <Redirect to="/auth" />;
-        }} />
+    <Route
+      {...rest}
+      render={(props) => {
+        if (userStore.data.auth) {
+          return <Component {...props} />
+        }
+        return <Redirect to="/auth" />;
+      }} />
   );
 
   return (
-      <BrowserRouter>
-        <Redirect exact from="/" to="/dashboard" />
-        <Route exact path="/auth" component={Auth} />
-        <PrivateRoute component={layout} />
-      </BrowserRouter>
+    <BrowserRouter>
+      <Redirect exact from="/" to="/dashboard" />
+      <Route exact path="/auth" component={Auth} />
+      <PrivateRoute component={layout} />
+    </BrowserRouter>
   );
 };
 

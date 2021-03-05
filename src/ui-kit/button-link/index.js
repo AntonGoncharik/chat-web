@@ -6,8 +6,8 @@ import './style.scss';
 const View = (props) => {
   return (
     <Breadcrumb>
-    <Breadcrumb.Section link onClick={props.onClick}>{props.lable}</Breadcrumb.Section>
-  </Breadcrumb>
+      <Breadcrumb.Section link onClick={props.onClick}>{props.lable}</Breadcrumb.Section>
+    </Breadcrumb>
   )
 };
 
