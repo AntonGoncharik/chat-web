@@ -4,7 +4,9 @@ import View from './view';
 
 const Container = (props) => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [isOpenModalForgetPassword, setIsOpenModalForgetPassword] = useState(false);
+  const [isOpenModalForgetPassword, setIsOpenModalForgetPassword] = useState(
+    false,
+  );
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [code, setCode] = useState('');
@@ -25,13 +27,9 @@ const Container = (props) => {
     setCode(value);
   };
 
-  const signin = async () => {
+  const signin = async () => 1;
 
-  };
-
-  const signup = () => {
-
-  };
+  const signup = () => 1;
 
   const openModalForgetPassword = () => {
     setIsOpenModalForgetPassword(true);
@@ -41,13 +39,9 @@ const Container = (props) => {
     setIsOpenModalForgetPassword(false);
   };
 
-  const sendEmailCode = () => {
+  const sendEmailCode = () => 1;
 
-  };
-
-  const sendEmailNewPassword = () => {
-
-  };
+  const sendEmailNewPassword = () => 1;
 
   return (
     <View
@@ -65,7 +59,8 @@ const Container = (props) => {
       closeModalForgetPassword={closeModalForgetPassword}
       isOpenModalForgetPassword={isOpenModalForgetPassword}
       sendEmailCode={sendEmailCode}
-      sendEmailNewPassword={sendEmailNewPassword} />
+      sendEmailNewPassword={sendEmailNewPassword}
+    />
   );
 };
 

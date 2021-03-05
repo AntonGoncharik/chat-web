@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button } from 'semantic-ui-react'
+import React from 'react';
+import { Button } from 'semantic-ui-react';
 
 import './style.scss';
 
@@ -7,12 +7,13 @@ const View = (props) => {
   return (
     <Button
       fluid
-      size='large'
+      size="large"
       onClick={props.onClick}
-      disabled={props.disabled}>
+      disabled={props.disabled}
+    >
       {props.lable}
     </Button>
-  )
+  );
 };
 
 export default View;

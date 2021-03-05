@@ -8,7 +8,7 @@ import { Sidebar } from './components';
 import 'semantic-ui-css/semantic.min.css';
 import './style/index.scss';
 
-import { userStore } from './store'
+import { userStore } from './store';
 
 const App = () => {
   const layout = (props) => (
@@ -38,10 +38,11 @@ const App = () => {
       {...rest}
       render={(props) => {
         if (userStore.data.auth) {
-          return <Component {...props} />
+          return <Component {...props} />;
         }
         return <Redirect to="/auth" />;
-      }} />
+      }}
+    />
   );
 
   return (
