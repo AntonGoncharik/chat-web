@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
 import { Auth, Dashboard, Dialogues, Users } from './pages';
-import { Sidebar } from './components';
+import { Sidebar, Header } from './components';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style/index.scss';
@@ -13,7 +13,9 @@ import { userStore } from './store';
 const App = () => {
   const layout = (props) => (
     <div className="app__container">
-      <div className="app__header">Header</div>
+      <div className="app__header">
+        <Header />
+      </div>
       <div className="app__sidebar">
         <Sidebar />
       </div>

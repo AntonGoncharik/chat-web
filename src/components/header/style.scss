@@ -1,0 +1,45 @@
+#root {
+  .header_container {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+
+    .header_avatar {
+      display: flex;
+      position: relative;
+      align-items: center;
+    }
+
+    .header__label {
+      margin-left: 1em;
+    }
+
+    .header_modal {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 4em;
+      height: 4em;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .header_modal_item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 2em;
+      background-color: beige;
+
+      &:hover {
+        background-color: rgb(119, 119, 47);
+      }
+    }
+
+    &:hover {
+      .header_modal {
+        opacity: 1;
+      }
+    }
+  }
+}
