@@ -1,0 +1,19 @@
+#root {
+  .message__container {
+    display: flex;
+    margin-top: 1em;
+
+    &>div {
+      padding: 0.5em;
+      border-radius: 2em;
+    }
+
+    &.message-left {
+      justify-content: flex-start;
+    }
+
+    &.message-right {
+      justify-content: flex-end;
+    }
+  }
+}

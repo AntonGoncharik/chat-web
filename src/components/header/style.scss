@@ -1,30 +1,37 @@
 #root {
-  .header_container {
+  .header__container {
     display: flex;
     justify-content: flex-end;
-    cursor: pointer;
 
-    .header_avatar {
+    .header__avatar {
       display: flex;
       position: relative;
       align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        .header__modal {
+          opacity: 1;
+          z-index: 1;
+        }
+      }
     }
 
     .header__label {
       margin-left: 1em;
     }
 
-    .header_modal {
+    .header__modal {
       position: absolute;
       left: 0;
       right: 0;
-      top: 4em;
-      height: 4em;
+      top: 2em;
       opacity: 0;
-      transition: opacity 0.5s;
+      z-index: -1;
+      transition: opacity 1s;
     }
 
-    .header_modal_item {
+    .header__modal_item {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -33,12 +40,6 @@
 
       &:hover {
         background-color: rgb(119, 119, 47);
-      }
-    }
-
-    &:hover {
-      .header_modal {
-        opacity: 1;
       }
     }
   }

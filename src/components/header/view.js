@@ -1,24 +1,25 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react';
-
-import { Avatar } from '../';
+import { Header, Image } from 'semantic-ui-react';
 
 import './style.scss';
 
 const View = (props) => {
   return (
-    <div className="header_container">
-      <div className="header_avatar">
-        <Avatar />
+    <div className="header__container">
+      <div className="header__avatar">
+        <Image
+          avatar
+          src="https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/"
+        />
         <div className="header__label">
           <Header size="medium">{'ant.goncharik@gmail.com'}</Header>
         </div>
-        <div className="header_modal">
-          <div className="header_modal_item" onClick={() => 1}>
-            <Header size="medium">my profile</Header>
+        <div className="header__modal">
+          <div className="header__modal_item" onClick={() => 1}>
+            <Header size="medium">My profile</Header>
           </div>
-          <div className="header_modal_item" onClick={() => 1}>
-            <Header size="medium">signout</Header>
+          <div className="header__modal_item" onClick={() => 1}>
+            <Header size="medium">Signout</Header>
           </div>
         </div>
       </div>

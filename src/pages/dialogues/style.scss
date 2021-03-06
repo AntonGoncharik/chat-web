@@ -1,0 +1,37 @@
+#root {
+  .dialogues__container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 9fr 1fr;
+    grid-template-areas:
+      "dialogues messages"
+      "dialogues input";
+    height: 100%;
+
+    .dialogues__list {
+      grid-area: dialogues;
+      padding-right: 0.5em;
+      overflow-y: auto;
+    }
+
+    .dialogues__messages {
+      grid-area: messages;
+      padding-left: 0.5em;
+      overflow-y: auto;
+    }
+
+    .dialogues__actions {
+      grid-area: input;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .dialogues__input {
+      width: 100%;
+    }
+
+    .dialogues__button {
+      margin-left: 1em;
+    }
+  }
+}
