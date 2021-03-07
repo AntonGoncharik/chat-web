@@ -2,10 +2,12 @@
   .message__container {
     display: flex;
     margin-top: 1em;
+    padding-right: 0.5em;
 
     &>div {
       padding: 0.5em;
       border-radius: 2em;
+      background-color: rgb(255, 255, 255);
     }
 
     &.message-left {

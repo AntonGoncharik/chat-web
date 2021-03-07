@@ -7,20 +7,20 @@
      "header header header"
      "sidebar content content"
      "sidebar  content  content";
-   background-color: #fff;
-   color: #444;
+   background-color: rgba(0, 0, 0, 0.05);
+   color: rgb(0, 0, 0);
    height: calc(100vh - 0.5em);
 
    .app__header,
    .app__content {
-     background-color: #444;
-     color: #fff;
-     padding: 1em;
+     background-color: rgba(0, 0, 0, 0.05);
+     color: rgb(0, 0, 0);
+     padding: 0.5em;
    }
 
    .app__sidebar {
-     background-color: #444;
-     color: #fff;
+     background-color: rgba(0, 0, 0, 0.05);
+     color: rgb(0, 0, 0);
    }
 
    .app__header {
@@ -33,5 +33,15 @@
 
    .app__content {
      grid-area: content;
+   }
+ }
+
+ #root {
+   div {
+     color: rgb(0, 0, 0);
+   }
+
+   p {
+     color: rgb(0, 0, 0);
    }
  }

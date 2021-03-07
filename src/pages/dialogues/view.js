@@ -61,7 +61,6 @@ const View = (props) => {
         <MessageItem />
       </div>
       <div className="dialogues__actions">
-        {/* <div className="dialogues__inp"> */}
         <Input className="dialogues__input" onChange={() => 1} />
         <Button
           className="dialogues__button"
@@ -72,7 +71,6 @@ const View = (props) => {
           disabled
           onClick={() => 1}
         />
-        {/* </div> */}
       </div>
     </div>
   );
