@@ -67,6 +67,7 @@ const View = (props) => {
           lable="Send"
           icon
           iconName="send"
+          labelPosition="left"
           loading
           disabled
           onClick={() => 1}

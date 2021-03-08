@@ -1,9 +1,20 @@
 import React from 'react';
 
+import { userStore } from '../../store';
+
 import View from './view';
 
 const Container = (props) => {
-  return <View />;
+  const goToProfile = () => {
+    props.history.push('/profile');
+  };
+
+  const signout = () => {
+    userStore.signout();
+    props.history.push('/auth');
+  };
+
+  return <View goToProfile={goToProfile} signout={signout} />;
 };
 
 export default Container;

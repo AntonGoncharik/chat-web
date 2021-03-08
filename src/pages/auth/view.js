@@ -25,7 +25,7 @@ const View = (props) => (
                 placeholder="Password"
                 type="password"
               />
-              <Button lable="Signin" />
+              <Button lable="Signin" onClick={props.signin} />
             </Segment>
           </Form>
           <Message>

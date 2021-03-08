@@ -7,7 +7,7 @@ const View = (props) => {
   return (
     <Button
       icon={props.icon}
-      labelPosition="left"
+      labelPosition={props.labelPosition}
       fluid={props.fluid}
       size="large"
       onClick={props.onClick}

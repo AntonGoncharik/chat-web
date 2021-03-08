@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { userStore } from '../../store';
+
 import View from './view';
 
 const Container = (props) => {
@@ -27,7 +29,10 @@ const Container = (props) => {
     setCode(value);
   };
 
-  const signin = async () => 1;
+  const signin = async () => {
+    userStore.signin();
+    props.history.push('/dashboard');
+  };
 
   const signup = () => 1;
 

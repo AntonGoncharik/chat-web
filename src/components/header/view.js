@@ -15,10 +15,10 @@ const View = (props) => {
           <Header size="tiny">{'ant.goncharik@gmail.com'}</Header>
         </div>
         <div className="header__modal">
-          <div className="header__modal_item" onClick={() => 1}>
+          <div className="header__modal_item" onClick={props.goToProfile}>
             <Header size="tiny">My profile</Header>
           </div>
-          <div className="header__modal_item" onClick={() => 1}>
+          <div className="header__modal_item" onClick={props.signout}>
             <Header size="tiny">Signout</Header>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { makeAutoObservable } from 'mobx';
 class UserStore {
   data = {
     email: '',
-    auth: true,
+    auth: false,
   };
 
   constructor() {

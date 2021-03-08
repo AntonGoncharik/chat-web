@@ -2,5 +2,34 @@
   .card__container {
     width: 100%;
     height: 100%;
+
+    .card__container_image {
+      position: relative;
+    }
+
+    .card__image_background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      -webkit-filter: blur(2px);
+      filter: blur(2px);
+    }
+
+    .card__image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      max-height: 400px;
+
+      img {
+        width: 100%;
+        max-height: 400px;
+        max-width: 600px;
+      }
+    }
   }
 }

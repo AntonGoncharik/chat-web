@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
-import { Auth, Dashboard, Dialogues, Users } from './pages';
+import { Auth, Dashboard, Dialogues, Users, Profile } from './pages';
 import { Sidebar, Header } from './components';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -14,22 +14,18 @@ const App = () => {
   const layout = (props) => (
     <div className="app__container">
       <div className="app__header">
-        <Header />
+        <Header {...props} />
       </div>
       <div className="app__sidebar">
         <Sidebar />
       </div>
       <div className="app__content">
         <Switch>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/dialogues">
-            <Dialogues />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
+          <Redirect exact from="/" to="/dashboard" />
+          <Route path="/dashboard" render={() => <Dashboard />} />
+          <Route path="/dialogues" render={() => <Dialogues />} />
+          <Route path="/users" render={() => <Users />} />
+          <Route path="/profile" render={() => <Profile />} />
         </Switch>
       </div>
     </div>
@@ -49,8 +45,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Redirect exact from="/" to="/dashboard" />
-      <Route exact path="/auth" component={Auth} />
+      <Route exact path="/auth" render={(props) => <Auth {...props} />} />
       <PrivateRoute component={layout} />
     </BrowserRouter>
   );
