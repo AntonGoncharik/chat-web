@@ -16,7 +16,7 @@ axiosInstance.interceptors.request.use((config) => {
 
   if (
     config.url === '/login' ||
-    (config.url === '/users' && config.method === 'POST')
+    (config.url === '/users' && config.method === 'post')
   ) {
     delete config.headers.Authorization;
   }

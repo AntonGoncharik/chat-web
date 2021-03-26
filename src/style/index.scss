@@ -36,6 +36,13 @@
    }
  }
 
+ .app__splash {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+ }
+
  #root {
    div {
      color: rgb(0, 0, 0);

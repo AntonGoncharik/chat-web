@@ -8,6 +8,7 @@ class UserStore {
     email: '',
     name: '',
     auth: false,
+    loading: false,
   };
 
   constructor() {
@@ -16,6 +17,8 @@ class UserStore {
 
   async signin(email, password) {
     try {
+      this.data.loading = true;
+
       const result = await UserService.login({ email, password });
 
       this.data.id = result.data.user._id;
@@ -25,16 +28,23 @@ class UserStore {
 
       UserService.setToken(result.data.token);
       UserService.setRefreshToken(result.data.refreshToken);
+
+      UserService.goToDashboard();
     } catch (error) {
       throw new Error(error);
+    } finally {
+      this.data.loading = false;
     }
   }
 
   async autoSignin() {
     try {
+      this.data.loading = true;
+
       const token = UserService.getToken();
 
       if (!token) {
+        this.data.loading = false;
         return;
       }
 
@@ -45,18 +55,21 @@ class UserStore {
       this.data.name = result.data.name;
       this.data.auth = true;
 
-      // UserService.goToDashboard();
+      UserService.goToDashboard();
     } catch (error) {
       throw new Error(error);
+    } finally {
+      this.data.loading = false;
     }
   }
 
   async signup(email, password) {
-    const result = await UserService.createUser({ email, password });
-    // eslint-disable-next-line no-debugger
-    debugger;
-    // this.data.email = 'test';
-    // this.data.auth = true;
+    try {
+      await UserService.createUser({ email, password });
+      await this.signin(email, password);
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   signout() {

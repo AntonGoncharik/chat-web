@@ -45,12 +45,10 @@ const App = () => {
   );
 
   const PrivateRoute = ({ component: Component, ...rest }) => {
-    console.log('userStore.data.auth', userStore.data.auth);
     return (
       <Route
         {...rest}
         render={(props) => {
-          console.log('props', props);
           if (userStore.data.auth) {
             return <Component {...props} />;
           }
@@ -59,6 +57,14 @@ const App = () => {
       />
     );
   };
+
+  if (userStore.data.loading) {
+    return (
+      <div className="app__splash">
+        <h1>CHAT</h1>
+      </div>
+    );
+  }
 
   return (
     <BrowserRouter>

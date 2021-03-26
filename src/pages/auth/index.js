@@ -32,7 +32,6 @@ const Container = (props) => {
   const signin = async () => {
     try {
       await userStore.signin(email, password);
-      props.history.push('/dashboard');
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +40,6 @@ const Container = (props) => {
   const signup = async () => {
     try {
       await userStore.signup(email, password);
-      props.history.push('/dashboard');
     } catch (error) {
       console.log(error);
     }
