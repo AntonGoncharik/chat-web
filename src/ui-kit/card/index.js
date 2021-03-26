@@ -18,7 +18,7 @@ const View = (props) => {
         />
       </div>
       <Card.Content>
-        <Card.Header>Anton</Card.Header>
+        <Card.Header>{props.user.name}</Card.Header>
         <Card.Meta>
           <span className="date">Joined in 2015</span>
         </Card.Meta>

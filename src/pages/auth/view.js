@@ -17,6 +17,7 @@ const View = (props) => (
                 icon="user"
                 iconPosition="left"
                 placeholder="E-mail address"
+                onChange={(event, data) => props.changeEmail(data.value)}
               />
               <Form.Input
                 fluid
@@ -24,6 +25,7 @@ const View = (props) => (
                 iconPosition="left"
                 placeholder="Password"
                 type="password"
+                onChange={(event, data) => props.changePassword(data.value)}
               />
               <Button lable="Signin" onClick={props.signin} />
             </Segment>
@@ -48,12 +50,14 @@ const View = (props) => (
                 icon="user"
                 iconPosition="left"
                 placeholder="E-mail"
+                onChange={(event, data) => props.changeEmail(data.value)}
               />
               <Form.Input
                 fluid
                 icon="user"
                 iconPosition="left"
                 placeholder="Code"
+                onChange={(event, data) => props.changeCode(data.value)}
               />
               <Form.Input
                 fluid
@@ -61,8 +65,9 @@ const View = (props) => (
                 iconPosition="left"
                 placeholder="Password"
                 type="password"
+                onChange={(event, data) => props.changePassword(data.value)}
               />
-              <Button lable="Signup" />
+              <Button lable="Signup" onClick={props.signup} />
             </Segment>
           </Form>
           <Message>

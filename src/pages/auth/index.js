@@ -30,11 +30,22 @@ const Container = (props) => {
   };
 
   const signin = async () => {
-    userStore.signin();
-    props.history.push('/dashboard');
+    try {
+      await userStore.signin(email, password);
+      props.history.push('/dashboard');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const signup = () => 1;
+  const signup = async () => {
+    try {
+      await userStore.signup(email, password);
+      props.history.push('/dashboard');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const openModalForgetPassword = () => {
     setIsOpenModalForgetPassword(true);

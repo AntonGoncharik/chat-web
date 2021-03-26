@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
@@ -11,6 +12,18 @@ import './style/index.scss';
 import { userStore } from './store';
 
 const App = () => {
+  useEffect(() => {
+    const autoSignin = async () => {
+      try {
+        await userStore.autoSignin();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    autoSignin();
+  }, []);
+
   const layout = (props) => (
     <div className="app__container">
       <div className="app__header">
@@ -31,21 +44,25 @@ const App = () => {
     </div>
   );
 
-  const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-      {...rest}
-      render={(props) => {
-        if (userStore.data.auth) {
-          return <Component {...props} />;
-        }
-        return <Redirect to="/auth" />;
-      }}
-    />
-  );
+  const PrivateRoute = ({ component: Component, ...rest }) => {
+    console.log('userStore.data.auth', userStore.data.auth);
+    return (
+      <Route
+        {...rest}
+        render={(props) => {
+          console.log('props', props);
+          if (userStore.data.auth) {
+            return <Component {...props} />;
+          }
+          return <Redirect to="/login" />;
+        }}
+      />
+    );
+  };
 
   return (
     <BrowserRouter>
-      <Route exact path="/auth" render={(props) => <Auth {...props} />} />
+      <Route exact path="/login" render={(props) => <Auth {...props} />} />
       <PrivateRoute component={layout} />
     </BrowserRouter>
   );

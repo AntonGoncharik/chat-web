@@ -11,33 +11,19 @@ const View = (props) => {
     <div className="users__container">
       <div className="users__list">
         <List selection divided verticalAlign="middle">
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
-          <UserItem />
+          {props.users.map((item) => (
+            <UserItem
+              name={item.name}
+              onClick={() => props.openUser(item._id)}
+            />
+          ))}
         </List>
       </div>
-      <div className="users__profile">
-        <Card />
-      </div>
+      {props.user && (
+        <div className="users__profile">
+          <Card user={props.user} />
+        </div>
+      )}
     </div>
   );
 };
