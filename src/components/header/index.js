@@ -14,7 +14,13 @@ const Container = (props) => {
     props.history.push('/auth');
   };
 
-  return <View goToProfile={goToProfile} signout={signout} />;
+  return (
+    <View
+      goToProfile={goToProfile}
+      signout={signout}
+      email={userStore.data.email}
+    />
+  );
 };
 
 export default Container;

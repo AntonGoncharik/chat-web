@@ -20,7 +20,7 @@ export default {
   },
   async getUserByToken() {
     try {
-      const result = await apiGet('/users');
+      const result = await apiGet('/users', { params: { token: 1 } });
       return { data: result.data, status: result.status };
     } catch (error) {
       throw new Error(error.response.data.message);

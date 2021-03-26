@@ -12,7 +12,7 @@ const View = (props) => {
           src="https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/"
         />
         <div className="header__label">
-          <Header size="tiny">{'ant.goncharik@gmail.com'}</Header>
+          <Header size="tiny">{props.email}</Header>
         </div>
         <div className="header__modal">
           <div className="header__modal_item" onClick={props.goToProfile}>
