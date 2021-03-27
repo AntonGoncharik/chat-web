@@ -19,7 +19,7 @@ const View = (props) => {
             <Header size="tiny">My profile</Header>
           </div>
           <div className="header__modal_item" onClick={props.signout}>
-            <Header size="tiny">Signout</Header>
+            <Header size="tiny">signout</Header>
           </div>
         </div>
       </div>

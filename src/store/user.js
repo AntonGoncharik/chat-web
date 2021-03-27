@@ -19,7 +19,7 @@ class UserStore {
     try {
       this.data.loading = true;
 
-      const result = await UserService.login({ email, password });
+      const result = await UserService.signin({ email, password });
 
       this.data.id = result.data.user._id;
       this.data.email = result.data.user.email;
@@ -37,7 +37,7 @@ class UserStore {
     }
   }
 
-  async autoSignin() {
+  async autosignin() {
     try {
       this.data.loading = true;
 
@@ -72,10 +72,14 @@ class UserStore {
     }
   }
 
-  signout() {
-    this.data.auth = false;
+  async signout() {
+    try {
+      await UserService.signout({ id: this.data.id });
 
-    UserService.logout();
+      this.data.auth = false;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 }
 

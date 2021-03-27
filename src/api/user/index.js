@@ -2,9 +2,9 @@
 import { apiGet, apiPost, apiPatch } from '../api';
 
 export default {
-  async login(data) {
+  async signin(data) {
     try {
-      const result = await apiPost('/login', data);
+      const result = await apiPost('/signin', data);
       return { data: result.data, status: result.status };
     } catch (error) {
       throw new Error(error.response.data.message);
@@ -50,10 +50,18 @@ export default {
       throw new Error(error.response.data.message);
     }
   },
-  logout() {
-    globalThis.localStorage.removeItem('token');
-    globalThis.localStorage.removeItem('refreshToken');
-    globalThis.history.replaceState({}, '/', '/');
+  async signout(data) {
+    try {
+      if (data) {
+        await apiPost('/signout', data, config);
+      }
+
+      globalThis.localStorage.removeItem('token');
+      globalThis.localStorage.removeItem('refreshToken');
+      globalThis.history.replaceState({}, '/', '/');
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   },
   goToDashboard() {
     globalThis.history.replaceState({}, '/dashboard', '/dashboard');

@@ -15,7 +15,7 @@ axiosInstance.interceptors.request.use((config) => {
   config.headers.Authorization = `jwt ${token}`;
 
   if (
-    config.url === '/login' ||
+    config.url === '/signin' ||
     (config.url === '/users' && config.method === 'post')
   ) {
     delete config.headers.Authorization;
@@ -28,7 +28,7 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response.data.code === 401) {
-      UserService.logout();
+      UserService.signout();
     }
     return Promise.reject(error);
   },

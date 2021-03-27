@@ -13,15 +13,15 @@ import { userStore } from './store';
 
 const App = () => {
   useEffect(() => {
-    const autoSignin = async () => {
+    const autosignin = async () => {
       try {
-        await userStore.autoSignin();
+        await userStore.autosignin();
       } catch (error) {
         console.log(error);
       }
     };
 
-    autoSignin();
+    autosignin();
   }, []);
 
   const layout = (props) => (
@@ -52,7 +52,7 @@ const App = () => {
           if (userStore.data.auth) {
             return <Component {...props} />;
           }
-          return <Redirect to="/login" />;
+          return <Redirect to="/signin" />;
         }}
       />
     );
@@ -68,7 +68,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Route exact path="/login" render={(props) => <Auth {...props} />} />
+      <Route exact path="/signin" render={(props) => <Auth {...props} />} />
       <PrivateRoute component={layout} />
     </BrowserRouter>
   );
