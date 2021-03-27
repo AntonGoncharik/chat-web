@@ -12,14 +12,14 @@ const View = (props) => {
           src="https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/"
         />
         <div className="header__label">
-          <Header size="tiny">{props.email}</Header>
+          <Header size="tiny">{props.name}</Header>
         </div>
         <div className="header__modal">
           <div className="header__modal_item" onClick={props.goToProfile}>
             <Header size="tiny">My profile</Header>
           </div>
           <div className="header__modal_item" onClick={props.signout}>
-            <Header size="tiny">signout</Header>
+            <Header size="tiny">Signout</Header>
           </div>
         </div>
       </div>

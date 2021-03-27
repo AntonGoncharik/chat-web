@@ -18,7 +18,7 @@ const Container = (props) => {
     <View
       goToProfile={goToProfile}
       signout={signout}
-      email={userStore.data.email}
+      name={userStore.data.name}
     />
   );
 };
