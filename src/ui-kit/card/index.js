@@ -18,25 +18,30 @@ const View = (props) => {
         />
       </div>
       <Card.Content>
-        {props.edit ? (
-          <Input
-            value={props.name}
-            onChange={(event) => props.changeName(event.target.value)}
-          />
-        ) : (
-          <Card.Header>{props.name}</Card.Header>
-        )}
-        <Card.Header>{props.email}</Card.Header>
-        <Card.Meta>
+        <Card.Header className="card__input">{props.email}</Card.Header>
+        <Card.Meta className="card__input">
           <span className="date">{`Joined in ${new Date(
             props.createdAt,
           ).getFullYear()}`}</span>
         </Card.Meta>
         {props.edit ? (
-          <TextArea
-            value={props.description}
-            onChange={(event) => props.changeDescription(event.target.value)}
-          />
+          <div className="card__input">
+            <Input
+              value={props.name}
+              onChange={(event) => props.changeName(event.target.value)}
+            />
+          </div>
+        ) : (
+          <Card.Header>{props.name}</Card.Header>
+        )}
+        {props.edit ? (
+          <div className="card__input">
+            <TextArea
+              value={props.description}
+              onChange={(event) => props.changeDescription(event.target.value)}
+              className="card__text_area"
+            />
+          </div>
         ) : (
           <Card.Description>{props.description}</Card.Description>
         )}
@@ -57,6 +62,8 @@ const View = (props) => {
             icon
             iconName="save"
             labelPosition="left"
+            loading={props.loading}
+            disabled={props.loading}
           />
         )}
       </Card.Content>

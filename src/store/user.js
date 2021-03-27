@@ -96,10 +96,13 @@ class UserStore {
 
   async save(name, description) {
     try {
-      await UserService.updateUser(
+      const result = await UserService.updateUser(
         { id: this.data.id, data: { name, description } },
         {},
       );
+
+      this.data.name = result.data.name;
+      this.data.description = result.data.description;
     } catch (error) {
       throw new Error(error);
     }

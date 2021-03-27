@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 
 import { userStore } from '../../store';
 
@@ -23,4 +24,4 @@ const Container = (props) => {
   );
 };
 
-export default Container;
+export default observer(Container);

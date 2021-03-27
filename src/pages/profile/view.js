@@ -16,6 +16,7 @@ const View = (props) => {
         changeName={props.changeName}
         changeDescription={props.changeDescription}
         save={props.save}
+        loading={props.loading}
       />
     </>
   );
