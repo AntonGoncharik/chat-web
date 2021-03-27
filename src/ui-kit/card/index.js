@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 
-import { Button } from '..';
+import { Button, Input, TextArea } from '..';
 
 import './style.scss';
 
@@ -18,22 +18,47 @@ const View = (props) => {
         />
       </div>
       <Card.Content>
-        <Card.Header>{props.name}</Card.Header>
+        {props.edit ? (
+          <Input
+            value={props.name}
+            onChange={(event) => props.changeName(event.target.value)}
+          />
+        ) : (
+          <Card.Header>{props.name}</Card.Header>
+        )}
         <Card.Header>{props.email}</Card.Header>
         <Card.Meta>
           <span className="date">{`Joined in ${new Date(
             props.createdAt,
           ).getFullYear()}`}</span>
         </Card.Meta>
-        <Card.Description>{props.description}</Card.Description>
+        {props.edit ? (
+          <TextArea
+            value={props.description}
+            onChange={(event) => props.changeDescription(event.target.value)}
+          />
+        ) : (
+          <Card.Description>{props.description}</Card.Description>
+        )}
       </Card.Content>
       <Card.Content extra>
-        <Button
-          lable="Write"
-          icon
-          iconName="facebook messenger"
-          labelPosition="left"
-        />
+        {!props.edit && (
+          <Button
+            lable="Write"
+            icon
+            iconName="facebook messenger"
+            labelPosition="left"
+          />
+        )}
+        {props.edit && (
+          <Button
+            lable="Save"
+            onClick={props.save}
+            icon
+            iconName="save"
+            labelPosition="left"
+          />
+        )}
       </Card.Content>
     </Card>
   );

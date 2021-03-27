@@ -9,6 +9,7 @@ const View = (props) => {
       placeholder="Enter..."
       size="large"
       className={props.className}
+      value={props.value}
       onChange={props.onChange}
     />
   );

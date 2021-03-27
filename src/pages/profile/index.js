@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { userStore } from '../../store';
 
 import View from './view';
 
 const Container = (props) => {
+  const [name, setName] = useState(userStore.data.name);
+  const [description, setDescription] = useState(userStore.data.description);
+
+  const changeName = (value) => {
+    setName(value);
+  };
+
+  const changeDescription = (value) => {
+    setDescription(value);
+  };
+
+  const save = () => {
+    userStore.save(name, description);
+  };
+
   return (
     <View
-      name={userStore.data.name}
+      name={name}
       email={userStore.data.email}
       createdAt={userStore.data.createdAt}
-      description={userStore.data.description}
+      description={description}
+      changeName={changeName}
+      changeDescription={changeDescription}
+      save={save}
     />
   );
 };

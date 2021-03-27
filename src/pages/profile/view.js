@@ -8,10 +8,14 @@ const View = (props) => {
   return (
     <>
       <Card
+        edit
         name={props.name}
         email={props.email}
         createdAt={props.createdAt}
         description={props.description}
+        changeName={props.changeName}
+        changeDescription={props.changeDescription}
+        save={props.save}
       />
     </>
   );

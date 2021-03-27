@@ -93,6 +93,17 @@ class UserStore {
       this.data.loading = false;
     }
   }
+
+  async save(name, description) {
+    try {
+      await UserService.updateUser(
+        { id: this.data.id, data: { name, description } },
+        {},
+      );
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }
 
 export default new UserStore();
