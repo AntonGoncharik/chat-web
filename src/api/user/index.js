@@ -53,7 +53,7 @@ export default {
   async signout(data) {
     try {
       if (data) {
-        await apiPost('/signout', data, config);
+        await apiPost('/signout', data);
       }
 
       globalThis.localStorage.removeItem('token');
