@@ -32,7 +32,7 @@ const View = (props) => {
       )}
       {!props.user && (
         <div className="users__noone">
-          <Header size="huge">Please, choose a someone user</Header>
+          <Header size="huge">Please, choose a someone user on the left</Header>
         </div>
       )}
     </div>
