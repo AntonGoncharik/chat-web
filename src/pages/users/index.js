@@ -19,8 +19,6 @@ const Container = (props) => {
   }, []);
 
   const openUser = (id) => {
-    // eslint-disable-next-line no-debugger
-    debugger;
     setUser(users.find((item) => item._id === id));
   };
 

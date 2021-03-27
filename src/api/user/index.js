@@ -10,7 +10,7 @@ export default {
       throw new Error(error.response.data.message);
     }
   },
-  async getUsers(page, records) {
+  async getUsers(page = 1, records = 20) {
     try {
       const result = await apiGet('/users', { params: { page, records } });
       return { data: result.data, status: result.status };

@@ -5,7 +5,11 @@ import './style.scss';
 
 const View = (props) => {
   return (
-    <List.Item className="user-item__container" onClick={props.onClick}>
+    <List.Item
+      className="user-item__container"
+      onClick={props.onClick}
+      active={props.active}
+    >
       <Image
         avatar
         src="https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/"

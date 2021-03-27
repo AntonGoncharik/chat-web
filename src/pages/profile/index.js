@@ -9,7 +9,7 @@ const Container = (props) => {
     <View
       name={userStore.data.name}
       email={userStore.data.email}
-      createdAt={new Date(userStore.data.createdAt).getFullYear()}
+      createdAt={userStore.data.createdAt}
       description={userStore.data.description}
     />
   );

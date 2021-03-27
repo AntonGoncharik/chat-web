@@ -21,7 +21,9 @@ const View = (props) => {
         <Card.Header>{props.name}</Card.Header>
         <Card.Header>{props.email}</Card.Header>
         <Card.Meta>
-          <span className="date">{`Joined in ${props.createdAt}`}</span>
+          <span className="date">{`Joined in ${new Date(
+            props.createdAt,
+          ).getFullYear()}`}</span>
         </Card.Meta>
         <Card.Description>{props.description}</Card.Description>
       </Card.Content>
