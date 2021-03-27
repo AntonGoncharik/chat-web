@@ -27,7 +27,7 @@ const View = (props) => (
                 type="password"
                 onChange={(event, data) => props.changePassword(data.value)}
               />
-              <Button lable="signin" onClick={props.signin} />
+              <Button lable="Signin" onClick={props.signin} />
             </Segment>
           </Form>
           <Message>

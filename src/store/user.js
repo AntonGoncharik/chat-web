@@ -7,6 +7,8 @@ class UserStore {
     id: '',
     email: '',
     name: '',
+    createdAt: '',
+    description: '',
     auth: false,
     loading: false,
   };
@@ -24,6 +26,8 @@ class UserStore {
       this.data.id = result.data.user._id;
       this.data.email = result.data.user.email;
       this.data.name = result.data.user.name;
+      this.data.createdAt = result.data.user.createdAt;
+      this.data.description = result.data.user.description;
       this.data.auth = true;
 
       UserService.setToken(result.data.token);
@@ -53,6 +57,8 @@ class UserStore {
       this.data.id = result.data._id;
       this.data.email = result.data.email;
       this.data.name = result.data.name;
+      this.data.createdAt = result.data.createdAt;
+      this.data.description = result.data.description;
       this.data.auth = true;
 
       UserService.goToDashboard();

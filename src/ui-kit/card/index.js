@@ -18,11 +18,12 @@ const View = (props) => {
         />
       </div>
       <Card.Content>
-        <Card.Header>{props.user.name}</Card.Header>
+        <Card.Header>{props.name}</Card.Header>
+        <Card.Header>{props.email}</Card.Header>
         <Card.Meta>
-          <span className="date">Joined in 2015</span>
+          <span className="date">{`Joined in ${props.createdAt}`}</span>
         </Card.Meta>
-        <Card.Description>My status</Card.Description>
+        <Card.Description>{props.description}</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <Button

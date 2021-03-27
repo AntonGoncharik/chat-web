@@ -7,7 +7,12 @@ import './style.scss';
 const View = (props) => {
   return (
     <>
-      <Card />
+      <Card
+        name={props.name}
+        email={props.email}
+        createdAt={props.createdAt}
+        description={props.description}
+      />
     </>
   );
 };
