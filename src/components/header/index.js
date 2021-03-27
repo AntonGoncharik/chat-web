@@ -11,13 +11,13 @@ const Container = (props) => {
 
   const signout = () => {
     userStore.signout();
-    props.history.push('/auth');
   };
 
   return (
     <View
       goToProfile={goToProfile}
       signout={signout}
+      email={userStore.data.email}
       name={userStore.data.name}
     />
   );

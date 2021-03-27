@@ -58,6 +58,7 @@ export default {
 
       globalThis.localStorage.removeItem('token');
       globalThis.localStorage.removeItem('refreshToken');
+
       globalThis.history.replaceState({}, '/', '/');
     } catch (error) {
       throw new Error(error.response.data.message);
@@ -65,6 +66,9 @@ export default {
   },
   goToDashboard() {
     globalThis.history.replaceState({}, '/dashboard', '/dashboard');
+  },
+  goToSignin() {
+    globalThis.history.replaceState({}, '/signin', '/signin');
   },
   setToken(token) {
     globalThis.localStorage.setItem('token', token);

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { List, Image } from 'semantic-ui-react';
 
@@ -6,7 +7,7 @@ import './style.scss';
 const View = (props) => {
   return (
     <List.Item
-      className="user-item__container"
+      className={`user-item__container ${props.active ? 'user-item__container-active' : ''}`}
       onClick={props.onClick}
       active={props.active}
     >

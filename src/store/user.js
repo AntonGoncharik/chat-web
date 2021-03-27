@@ -80,11 +80,17 @@ class UserStore {
 
   async signout() {
     try {
+      this.data.loading = true;
+
       await UserService.signout({ id: this.data.id });
 
       this.data.auth = false;
+
+      UserService.goToSignin();
     } catch (error) {
       throw new Error(error);
+    } finally {
+      this.data.loading = false;
     }
   }
 }
