@@ -2,11 +2,12 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import { SemanticToastContainer } from 'react-semantic-toasts';
 
 import { connectSocket, socket } from './api/socket';
 
 import { Auth, Dashboard, Dialogues, Users, Profile } from './pages';
-import { Sidebar, Header } from './components';
+import { Sidebar, Header, Toast } from './components';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style/index.scss';
@@ -19,7 +20,7 @@ const App = () => {
       try {
         await userStore.autosignin();
       } catch (error) {
-        console.log(error);
+        Toast('error', error.message);
       }
     };
 
@@ -92,6 +93,7 @@ const App = () => {
     <BrowserRouter>
       <Route exact path="/signin" render={(props) => <Auth {...props} />} />
       <PrivateRoute component={layout} />
+      <SemanticToastContainer position="bottom-right" animation="fly down" />
     </BrowserRouter>
   );
 };
