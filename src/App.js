@@ -30,20 +30,15 @@ const App = () => {
   useEffect(() => {
     if (userStore.data.id) {
       connectSocket();
-      socket &&
-        socket.on('connect', () => {
-          console.log(socket.id);
-          socket && socket.emit('connectUser', 'world');
-
-          // socket.emit('connectUser', userStore.data.id);
-          // socket.emit('connectUser');
-        });
-      // socket &&
-      //   socket.on('hello', (arg) => {
-      //     console.log(arg); // world
-      //   });
-      // socket && socket.emit('connectUser', 'world');
-      // socket && socket.emit('connectUser', userStore.data.id);
+      socket.on('connect', () => {
+        socket.emit('connectUser', userStore.data.id);
+      });
+      socket.on('connectUser', (userId, onlineUsers) => {
+        userStore.setOnlineUsers(onlineUsers);
+      });
+      socket.on('disconnectUser', (onlineUsers) => {
+        userStore.setOnlineUsers(onlineUsers);
+      });
     }
   }, [userStore.data.id]);
 

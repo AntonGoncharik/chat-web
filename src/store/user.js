@@ -11,6 +11,10 @@ class UserStore {
     description: '',
     auth: false,
     loading: false,
+    statistics: {
+      allUsers: 0,
+      onlineUsers: 0,
+    },
   };
 
   constructor() {
@@ -106,6 +110,10 @@ class UserStore {
     } catch (error) {
       throw new Error(error);
     }
+  }
+
+  setOnlineUsers(onlineUsers) {
+    this.data.statistics.onlineUsers = onlineUsers;
   }
 }
 

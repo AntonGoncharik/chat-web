@@ -7,7 +7,7 @@ const View = (props) => {
   return (
     <div>
       <Message content={`Total users: ${25}`} />
-      <Message content={`Online users: ${6}`} />
+      <Message content={`Online users: ${props.onlineUsers}`} />
       <Message content={`Total friends: ${10}`} />
       <Message content={`Online friends: ${2}`} />
     </div>

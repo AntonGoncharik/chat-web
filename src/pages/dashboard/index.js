@@ -1,9 +1,12 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
+
+import { userStore } from '../../store';
 
 import View from './view';
 
 const Container = (props) => {
-  return <View />;
+  return <View onlineUsers={userStore.data.statistics.onlineUsers} />;
 };
 
-export default Container;
+export default observer(Container);
