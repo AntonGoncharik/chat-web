@@ -30,17 +30,21 @@ const App = () => {
   useEffect(() => {
     if (userStore.data.id) {
       connectSocket();
-      socket.on('connect', () => {
-        socket.emit('connectUser', userStore.data.id);
-      });
-      socket.on('connectUser', (userId, onlineUsers) => {
-        userStore.setOnlineUsers(onlineUsers);
-      });
-      socket.on('disconnectUser', (onlineUsers) => {
-        userStore.setOnlineUsers(onlineUsers);
-      });
+      listenSocket();
     }
   }, [userStore.data.id]);
+
+  const listenSocket = () => {
+    socket.on('connect', () => {
+      socket.emit('connectUser', userStore.data.id);
+    });
+    socket.on('connectUser', (userId, onlineUsers) => {
+      userStore.setOnlineUsers(onlineUsers);
+    });
+    socket.on('disconnectUser', (onlineUsers) => {
+      userStore.setOnlineUsers(onlineUsers);
+    });
+  };
 
   const layout = (props) => (
     <div className="app__container">
