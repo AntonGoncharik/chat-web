@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
+import { connectSocket, socket } from './api/socket';
+
 import { Auth, Dashboard, Dialogues, Users, Profile } from './pages';
 import { Sidebar, Header } from './components';
 
@@ -23,6 +25,26 @@ const App = () => {
 
     autosignin();
   }, []);
+
+  useEffect(() => {
+    if (userStore.data.id) {
+      connectSocket();
+      socket &&
+        socket.on('connect', () => {
+          console.log(socket.id);
+          socket && socket.emit('connectUser', 'world');
+
+          // socket.emit('connectUser', userStore.data.id);
+          // socket.emit('connectUser');
+        });
+      // socket &&
+      //   socket.on('hello', (arg) => {
+      //     console.log(arg); // world
+      //   });
+      // socket && socket.emit('connectUser', 'world');
+      // socket && socket.emit('connectUser', userStore.data.id);
+    }
+  }, [userStore.data.id]);
 
   const layout = (props) => (
     <div className="app__container">
