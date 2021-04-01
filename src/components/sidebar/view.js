@@ -17,9 +17,9 @@ const View = (props) => {
       />
       <Menu.Item
         as={Link}
-        to="/dialogues"
-        name="dialogues"
-        active={location.pathname === '/dialogues'}
+        to="/rooms"
+        name="rooms"
+        active={location.pathname === '/rooms'}
       />
       <Menu.Item
         as={Link}

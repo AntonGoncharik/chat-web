@@ -50,6 +50,7 @@ const View = (props) => {
         {!props.edit && (
           <Button
             lable="Write"
+            onClick={props.createRoom}
             icon
             iconName="facebook messenger"
             labelPosition="left"

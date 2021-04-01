@@ -11,7 +11,7 @@ const View = (props) => {
         src="https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/"
       />
       <List.Content>
-        <List.Header>Anton</List.Header>
+        <List.Header>{props.name}</List.Header>
       </List.Content>
     </List.Item>
   );

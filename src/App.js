@@ -6,13 +6,13 @@ import { SemanticToastContainer } from 'react-semantic-toasts';
 
 import { connectSocket, socket } from './api/socket';
 
-import { Auth, Dashboard, Dialogues, Users, Profile } from './pages';
+import { Auth, Dashboard, Rooms, Users, Profile } from './pages';
 import { Sidebar, Header, Toast } from './components';
 
 import 'semantic-ui-css/semantic.min.css';
 import './style/index.scss';
 
-import { userStore } from './store';
+import { userStore, roomsStore } from './store';
 
 const App = () => {
   useEffect(() => {
@@ -36,13 +36,19 @@ const App = () => {
 
   const listenSocket = () => {
     socket.on('connect', () => {
-      socket.emit('connectUser', userStore.data.id);
+      socket.emit('users:connect', userStore.data.id);
     });
-    socket.on('connectUser', (userId, onlineUsers) => {
+    socket.on('users:connect', (onlineUsers) => {
       userStore.setOnlineUsers(onlineUsers);
     });
-    socket.on('disconnectUser', (onlineUsers) => {
+    socket.on('users:disconnect', (onlineUsers) => {
       userStore.setOnlineUsers(onlineUsers);
+    });
+    socket.on('rooms:create', (room) => {
+      roomsStore.createRoom(room);
+    });
+    socket.on('rooms:update', (room) => {
+      roomsStore.updateRoom(room);
     });
   };
 
@@ -58,7 +64,7 @@ const App = () => {
         <Switch>
           <Redirect exact from="/" to="/dashboard" />
           <Route path="/dashboard" render={() => <Dashboard />} />
-          <Route path="/dialogues" render={() => <Dialogues />} />
+          <Route path="/rooms" render={() => <Rooms />} />
           <Route path="/users" render={() => <Users />} />
           <Route path="/profile" render={() => <Profile />} />
         </Switch>

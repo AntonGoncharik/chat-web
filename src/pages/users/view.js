@@ -27,6 +27,7 @@ const View = (props) => {
             email={props.user.email}
             createdAt={props.user.createdAt}
             description={props.user.description}
+            createRoom={props.createRoom}
           />
         </div>
       )}
