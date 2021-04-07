@@ -1,8 +1,9 @@
 /* eslint-disable no-undef */
 import { makeAutoObservable } from 'mobx';
 
-import { RoomsService } from '../api';
-class RoomsStore {
+import { MessagesService } from '../api';
+
+class MessagesStore {
   data = {
     loading: false,
     list: [],
@@ -12,22 +13,19 @@ class RoomsStore {
     makeAutoObservable(this);
   }
 
-  createRoom(room) {
-    this.data.list.push(room);
+  createMessage(message) {
+    this.data.list.push(message);
   }
 
-  updateRoom(room) {
-    const oldRoom = this.data.list.find((item) => item._id === room._id);
-    if (oldRoom) {
-      console.log(1);
-    }
+  clearMessages() {
+    this.data.list.length = 0;
   }
 
-  async getRooms(userId) {
+  async getMessages(roomId) {
     try {
       this.data.loading = true;
 
-      const result = await RoomsService.getRooms(userId);
+      const result = await MessagesService.getMessages(roomId);
 
       this.data.list = [...this.data.list, ...result.data];
     } catch (error) {
@@ -38,4 +36,4 @@ class RoomsStore {
   }
 }
 
-export default new RoomsStore();
+export default new MessagesStore();

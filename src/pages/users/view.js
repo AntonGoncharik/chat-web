@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Header, Divider } from 'semantic-ui-react';
+import { List, Header } from 'semantic-ui-react';
 
 import { UserItem } from '../../components';
 import { Card } from '../../ui-kit';
@@ -13,6 +13,7 @@ const View = (props) => {
         <List selection divided verticalAlign="middle" animated>
           {props.users.map((item) => (
             <UserItem
+              key={item._id}
               name={item.name}
               onClick={() => props.openUser(item._id)}
               active={item._id === props.user?._id}

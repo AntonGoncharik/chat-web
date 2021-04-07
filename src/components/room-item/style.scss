@@ -1,10 +1,14 @@
 #root {
-  .dialog__container {
+  .room-item__container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     cursor: pointer;
+
+    &.room-item__container-active {
+      padding-left: 1em;
+    }
   }
 }

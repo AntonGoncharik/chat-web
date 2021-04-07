@@ -7,7 +7,7 @@ const View = (props) => {
   return (
     // eslint-disable-next-line prettier/prettier
     <div className={`message__container ${props.left ? 'message-left' : 'message-right'}`}>
-      <Message content="Anton" />
+      <Message content={props.text} />
     </div>
   );
 };

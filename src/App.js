@@ -12,7 +12,7 @@ import { Sidebar, Header, Toast } from './components';
 import 'semantic-ui-css/semantic.min.css';
 import './style/index.scss';
 
-import { userStore, roomsStore } from './store';
+import { userStore, roomsStore, messagesStore } from './store';
 
 const App = () => {
   useEffect(() => {
@@ -49,6 +49,9 @@ const App = () => {
     });
     socket.on('rooms:update', (room) => {
       roomsStore.updateRoom(room);
+    });
+    socket.on('messages:create', (message) => {
+      messagesStore.createMessage(message);
     });
   };
 
