@@ -12,7 +12,7 @@ const View = (props) => {
       <div className="rooms__list">
         {!props.rooms.length && (
           <div className="rooms__noone">
-            <Header size="huge">No rooms yet</Header>
+            <Header size="huge">There are no rooms yet</Header>
           </div>
         )}
         {!!props.rooms.length && (

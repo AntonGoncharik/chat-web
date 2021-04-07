@@ -29,6 +29,14 @@ const View = (props) => {
             createdAt={props.user.createdAt}
             description={props.user.description}
             createRoom={props.createRoom}
+            roomName={props.roomName}
+            changeRoomName={props.changeRoomName}
+            isOpenModal={props.isOpenModal}
+            titleModal={props.titleModal}
+            messageModal={props.messageModal}
+            openModal={props.openModal}
+            closeModal={props.closeModal}
+            clickModalOk={props.clickModalOk}
           />
         </div>
       )}

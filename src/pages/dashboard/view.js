@@ -6,10 +6,8 @@ import './style.scss';
 const View = (props) => {
   return (
     <div>
-      <Message content={`Total users: ${25}`} />
+      <Message content={`Total users: ${props.allUsers}`} />
       <Message content={`Online users: ${props.onlineUsers}`} />
-      <Message content={`Total friends: ${10}`} />
-      <Message content={`Online friends: ${2}`} />
     </div>
   );
 };

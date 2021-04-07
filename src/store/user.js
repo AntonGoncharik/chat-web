@@ -112,6 +112,9 @@ class UserStore {
     }
   }
 
+  setAllUsers(allUsers) {
+    this.data.statistics.allUsers = allUsers;
+  }
   setOnlineUsers(onlineUsers) {
     this.data.statistics.onlineUsers = onlineUsers;
   }

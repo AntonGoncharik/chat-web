@@ -38,10 +38,12 @@ const App = () => {
     socket.on('connect', () => {
       socket.emit('users:connect', userStore.data.id);
     });
-    socket.on('users:connect', (onlineUsers) => {
+    socket.on('users:connect', (onlineUsers, allUsers) => {
+      userStore.setAllUsers(allUsers);
       userStore.setOnlineUsers(onlineUsers);
     });
-    socket.on('users:disconnect', (onlineUsers) => {
+    socket.on('users:disconnect', (onlineUsers, allUsers) => {
+      userStore.setAllUsers(allUsers);
       userStore.setOnlineUsers(onlineUsers);
     });
     socket.on('rooms:create', (room) => {
@@ -68,7 +70,7 @@ const App = () => {
           <Redirect exact from="/" to="/dashboard" />
           <Route path="/dashboard" render={() => <Dashboard />} />
           <Route path="/rooms" render={() => <Rooms />} />
-          <Route path="/users" render={() => <Users />} />
+          <Route path="/users" render={() => <Users {...props} />} />
           <Route path="/profile" render={() => <Profile />} />
         </Switch>
       </div>

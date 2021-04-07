@@ -1,13 +1,25 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 
-import { Button, Input, TextArea } from '..';
+import { Button, Input, TextArea, Modal } from '..';
 
 import './style.scss';
 
 const View = (props) => {
   return (
     <Card className="card__container">
+      <Modal
+        isOpen={props.isOpenModal}
+        title={props.titleModal}
+        message={props.messageModal}
+        close={props.closeModal}
+        clickOk={props.clickModalOk}
+      >
+        <Input
+          value={props.roomName}
+          onChange={(event) => props.changeRoomName(event.target.value)}
+        />
+      </Modal>
       <div className="card__container_image">
         <div className="card__image_background" />
         <Image
@@ -50,7 +62,7 @@ const View = (props) => {
         {!props.edit && (
           <Button
             lable="Write"
-            onClick={props.createRoom}
+            onClick={props.openModal}
             icon
             iconName="facebook messenger"
             labelPosition="left"

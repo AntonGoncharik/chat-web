@@ -10,12 +10,18 @@ import View from './view';
 const Container = (props) => {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
+  const [roomName, setRoomName] = useState('');
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   useEffect(() => {
     const getUsers = async () => {
       const result = await UserService.getUsers(1, 20);
 
-      setUsers(result.data);
+      const usersWithoutMe = result.data.filter(
+        (item) => item._id !== userStore.data.id,
+      );
+
+      setUsers(usersWithoutMe);
     };
 
     getUsers();
@@ -26,7 +32,24 @@ const Container = (props) => {
   };
 
   const createRoom = () => {
-    socket.emit('rooms:create', userStore.data.id, user._id);
+    if (roomName.trim()) {
+      socket.emit('rooms:create', userStore.data.id, user._id, roomName.trim());
+      closeModal();
+      props.history.push('/rooms');
+    }
+  };
+
+  const changeRoomName = (value) => {
+    setRoomName(value);
+  };
+
+  const openModal = () => {
+    setIsOpenModal(true);
+  };
+
+  const closeModal = () => {
+    setRoomName('');
+    setIsOpenModal(false);
   };
 
   return (
@@ -35,6 +58,14 @@ const Container = (props) => {
       user={user}
       openUser={openUser}
       createRoom={createRoom}
+      roomName={roomName}
+      changeRoomName={changeRoomName}
+      isOpenModal={isOpenModal}
+      titleModal={'Message'}
+      messageModal={'Please, write room name'}
+      openModal={openModal}
+      closeModal={closeModal}
+      clickModalOk={createRoom}
     />
   );
 };
