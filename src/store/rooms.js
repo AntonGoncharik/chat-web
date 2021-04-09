@@ -2,6 +2,7 @@
 import { makeAutoObservable } from 'mobx';
 
 import { RoomsService } from '../api';
+import userStore from './user';
 class RoomsStore {
   data = {
     loading: false,
@@ -13,6 +14,13 @@ class RoomsStore {
   }
 
   createRoom(room) {
+    if (
+      !this.data.list.length &&
+      room.users.find((item) => item.userId === userStore.data.id)
+    ) {
+      return;
+    }
+
     this.data.list.push(room);
   }
 
