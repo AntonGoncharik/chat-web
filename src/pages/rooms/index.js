@@ -4,6 +4,7 @@ import { toJS } from 'mobx';
 
 import { socket } from '../../api/socket';
 import { roomsStore, messagesStore, userStore } from '../../store';
+import { Toast } from '../../components';
 
 import View from './view';
 
@@ -16,8 +17,16 @@ const Container = (props) => {
   const user = userStore.data;
 
   useEffect(() => {
+    const getRooms = async () => {
+      try {
+        await roomsStore.getRooms(user.id);
+      } catch (error) {
+        Toast('error', error.message);
+      }
+    };
+
     if (!rooms.list.length && user.id) {
-      roomsStore.getRooms(user.id);
+      getRooms();
     }
   }, [user.id, rooms.list.length]);
 

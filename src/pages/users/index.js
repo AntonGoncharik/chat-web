@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import { socket } from '../../api/socket';
-
 import { userStore } from '../../store';
 import { UserService } from '../../api';
+import { Toast } from '../../components';
 
 import View from './view';
 
@@ -15,13 +15,17 @@ const Container = (props) => {
 
   useEffect(() => {
     const getUsers = async () => {
-      const result = await UserService.getUsers(1, 20);
+      try {
+        const result = await UserService.getUsers(1, 20);
 
-      const usersWithoutMe = result.data.filter(
-        (item) => item._id !== userStore.data.id,
-      );
+        const usersWithoutMe = result.data.filter(
+          (item) => item._id !== userStore.data.id,
+        );
 
-      setUsers(usersWithoutMe);
+        setUsers(usersWithoutMe);
+      } catch (error) {
+        Toast('error', error.message);
+      }
     };
 
     getUsers();

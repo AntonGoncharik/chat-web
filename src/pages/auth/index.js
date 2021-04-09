@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { userStore } from '../../store';
+import { Toast } from '../../components';
 
 import View from './view';
 
@@ -33,7 +34,7 @@ const Container = (props) => {
     try {
       await userStore.signin(email, password);
     } catch (error) {
-      console.log(error);
+      Toast('error', error.message);
     }
   };
 
@@ -41,7 +42,7 @@ const Container = (props) => {
     try {
       await userStore.signup(email, password);
     } catch (error) {
-      console.log(error);
+      Toast('error', error.message);
     }
   };
 

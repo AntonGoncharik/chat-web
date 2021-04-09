@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { userStore } from '../../store';
+import { Toast } from '../../components';
 
 import View from './view';
 
@@ -28,7 +29,7 @@ const Container = (props) => {
 
         await userStore.save(name, description);
       } catch (error) {
-        console.log(error);
+        Toast('error', error.message);
       } finally {
         setLoading(false);
       }
