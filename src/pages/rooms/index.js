@@ -53,7 +53,7 @@ const Container = (props) => {
     <View
       rooms={rooms.list}
       room={room}
-      messages={messages.list}
+      messages={messages.list.filter((item) => item.roomId === room?._id)}
       text={text}
       userId={user.id}
       loading={rooms.loading}
