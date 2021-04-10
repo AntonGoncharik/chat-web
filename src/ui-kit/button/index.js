@@ -14,6 +14,8 @@ const View = (props) => {
       disabled={props.disabled}
       className={props.className}
       loading={props.loading}
+      as={props.as}
+      htmlFor={props.htmlFor}
     >
       {props.icon && <Icon name={props.iconName} />}
       {props.lable}

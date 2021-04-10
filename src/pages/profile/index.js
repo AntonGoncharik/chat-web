@@ -36,6 +36,10 @@ const Container = (props) => {
     }
   };
 
+  const changeAvatar = (e) => {
+    console.log(e);
+  };
+
   return (
     <View
       name={name}
@@ -46,6 +50,7 @@ const Container = (props) => {
       changeDescription={changeDescription}
       save={save}
       loading={loading}
+      changeAvatar={changeAvatar}
     />
   );
 };

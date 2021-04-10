@@ -69,15 +69,33 @@ const View = (props) => {
           />
         )}
         {props.edit && (
-          <Button
-            lable="Save"
-            onClick={props.save}
-            icon
-            iconName="save"
-            labelPosition="left"
-            loading={props.loading}
-            disabled={props.loading}
-          />
+          <>
+            <Button
+              lable="Save"
+              onClick={props.save}
+              icon
+              iconName="save"
+              labelPosition="left"
+              loading={props.loading}
+              disabled={props.loading}
+            />
+            <Button
+              as="label"
+              htmlFor="file-avatar"
+              lable="Upload avatar"
+              icon
+              iconName="photo"
+              labelPosition="left"
+              loading={props.loading}
+              disabled={props.loading}
+            />
+            <input
+              type="file"
+              id="file-avatar"
+              style={{ display: 'none' }}
+              onChange={props.changeAvatar}
+            />
+          </>
         )}
       </Card.Content>
     </Card>
