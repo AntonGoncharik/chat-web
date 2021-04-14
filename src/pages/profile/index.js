@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
-import { UserService } from '../../api';
 import { userStore } from '../../store';
 import { Toast } from '../../components';
-
+import { BASE_URL } from '../../config';
 import View from './view';
 
 const Container = (props) => {
   const [name, setName] = useState(userStore.data.name);
   const [description, setDescription] = useState(userStore.data.description);
-  const [loading, setLoading] = useState(false);
   const [strAvatar, setStrAvatar] = useState('');
   const [fileAvatar, setFileAvatar] = useState(null);
 
@@ -22,15 +20,13 @@ const Container = (props) => {
     setDescription(value);
   };
 
-  const save = async () => {
+  const save = () => {
     try {
-      setLoading(true);
-
       if (
         name !== userStore.data.name ||
         description !== userStore.data.description
       ) {
-        await userStore.save(name, description);
+        userStore.save({ name, description });
       }
 
       if (fileAvatar) {
@@ -38,16 +34,12 @@ const Container = (props) => {
         formData.append('id', userStore.data.id);
         formData.append('avatar', fileAvatar);
 
-        const resultUserUpdated = await UserService.updateUser(formData, {
-          contentType: 'multipart/form-data',
-        });
+        userStore.save({ formData });
 
         setFileAvatar(null);
       }
     } catch (error) {
       Toast('error', error.message);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -70,10 +62,11 @@ const Container = (props) => {
       email={userStore.data.email}
       createdAt={userStore.data.createdAt}
       description={description}
+      avatar={`${BASE_URL}/${userStore.data.avatar}`}
       changeName={changeName}
       changeDescription={changeDescription}
       save={save}
-      loading={loading}
+      loading={userStore.data.loading}
       strAvatar={strAvatar}
       changeAvatar={changeAvatar}
     />

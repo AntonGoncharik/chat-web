@@ -9,6 +9,7 @@ class UserStore {
     name: '',
     createdAt: '',
     description: '',
+    avatar: '',
     auth: false,
     loading: false,
     statistics: {
@@ -32,6 +33,7 @@ class UserStore {
       this.data.name = result.data.user.name;
       this.data.createdAt = result.data.user.createdAt;
       this.data.description = result.data.user.description;
+      this.data.avatar = result.data.user.avatar;
       this.data.auth = true;
 
       UserService.setToken(result.data.token);
@@ -63,6 +65,7 @@ class UserStore {
       this.data.name = result.data.name;
       this.data.createdAt = result.data.createdAt;
       this.data.description = result.data.description;
+      this.data.avatar = result.data.avatar;
       this.data.auth = true;
 
       UserService.goToDashboard();
@@ -98,17 +101,31 @@ class UserStore {
     }
   }
 
-  async save(name, description) {
+  async save(data) {
     try {
-      const result = await UserService.updateUser(
-        { id: this.data.id, data: { name, description } },
-        {},
-      );
+      this.data.loading = true;
 
-      this.data.name = result.data.name;
-      this.data.description = result.data.description;
+      if (data.name) {
+        const result = await UserService.updateUser(
+          { id: this.data.id, data },
+          {},
+        );
+
+        this.data.name = result.data.name;
+        this.data.description = result.data.description;
+      }
+
+      if (data.formData) {
+        const resultAvatar = await UserService.updateUser(data.formData, {
+          contentType: 'multipart/form-data',
+        });
+
+        this.data.avatar = resultAvatar.data.avatar;
+      }
     } catch (error) {
       throw new Error(error);
+    } finally {
+      this.data.loading = false;
     }
   }
 

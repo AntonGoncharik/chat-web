@@ -13,6 +13,7 @@ const View = (props) => {
         email={props.email}
         createdAt={props.createdAt}
         description={props.description}
+        avatar={props.avatar}
         changeName={props.changeName}
         changeDescription={props.changeDescription}
         save={props.save}
