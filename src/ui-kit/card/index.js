@@ -5,6 +5,9 @@ import { Button, Input, TextArea, Modal } from '..';
 
 import './style.scss';
 
+const avatar =
+  'https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/';
+
 const View = (props) => {
   return (
     <Card className="card__container">
@@ -21,9 +24,15 @@ const View = (props) => {
         />
       </Modal>
       <div className="card__container_image">
-        <div className="card__image_background" />
+        <div
+          className="card__image_background"
+          style={{
+            backgroundImage:
+              'url(' + `${props.strAvatar ? props.strAvatar : avatar}` + ')',
+          }}
+        />
         <Image
-          src="https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/"
+          src={`${props.strAvatar ? props.strAvatar : avatar}`}
           wrapped
           ui={false}
           className="card__image"

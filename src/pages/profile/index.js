@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
+import { UserService } from '../../api';
 import { userStore } from '../../store';
 import { Toast } from '../../components';
 
@@ -10,6 +11,8 @@ const Container = (props) => {
   const [name, setName] = useState(userStore.data.name);
   const [description, setDescription] = useState(userStore.data.description);
   const [loading, setLoading] = useState(false);
+  const [strAvatar, setStrAvatar] = useState('');
+  const [fileAvatar, setFileAvatar] = useState(null);
 
   const changeName = (value) => {
     setName(value);
@@ -20,24 +23,45 @@ const Container = (props) => {
   };
 
   const save = async () => {
-    if (
-      name !== userStore.data.name ||
-      description !== userStore.data.description
-    ) {
-      try {
-        setLoading(true);
+    try {
+      setLoading(true);
 
+      if (
+        name !== userStore.data.name ||
+        description !== userStore.data.description
+      ) {
         await userStore.save(name, description);
-      } catch (error) {
-        Toast('error', error.message);
-      } finally {
-        setLoading(false);
       }
+
+      if (fileAvatar) {
+        const formData = new FormData();
+        formData.append('id', userStore.data.id);
+        formData.append('avatar', fileAvatar);
+
+        const resultUserUpdated = await UserService.updateUser(formData, {
+          contentType: 'multipart/form-data',
+        });
+
+        setFileAvatar(null);
+      }
+    } catch (error) {
+      Toast('error', error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   const changeAvatar = (e) => {
-    console.log(e);
+    const img = e.target.files[0];
+    if (img) {
+      setFileAvatar(img);
+      // eslint-disable-next-line no-undef
+      const reader = new FileReader();
+      reader.readAsDataURL(img);
+      reader.onloadend = () => {
+        setStrAvatar(reader.result);
+      };
+    }
   };
 
   return (
@@ -50,6 +74,7 @@ const Container = (props) => {
       changeDescription={changeDescription}
       save={save}
       loading={loading}
+      strAvatar={strAvatar}
       changeAvatar={changeAvatar}
     />
   );
