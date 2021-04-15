@@ -3,7 +3,6 @@ import { observer } from 'mobx-react-lite';
 
 import { userStore } from '../../store';
 import { Toast } from '../../components';
-import { BASE_URL } from '../../config';
 import View from './view';
 
 const Container = (props) => {
@@ -62,7 +61,7 @@ const Container = (props) => {
       email={userStore.data.email}
       createdAt={userStore.data.createdAt}
       description={description}
-      avatar={`${BASE_URL}/${userStore.data.avatar}`}
+      avatar={userStore.data.avatar}
       changeName={changeName}
       changeDescription={changeDescription}
       save={save}

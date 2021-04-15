@@ -15,6 +15,7 @@ const View = (props) => {
             <UserItem
               key={item._id}
               name={item.name}
+              avatar={item.avatar}
               onClick={() => props.openUser(item._id)}
               active={item._id === props.user?._id}
             />
@@ -26,6 +27,7 @@ const View = (props) => {
           <Card
             name={props.user.name}
             email={props.user.email}
+            avatar={props.user.avatar}
             createdAt={props.user.createdAt}
             description={props.user.description}
             createRoom={props.createRoom}

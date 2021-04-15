@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, Image } from 'semantic-ui-react';
 
+import imageRoom from '../../assets/images/room.png';
 import './style.scss';
 
 const View = (props) => {
@@ -11,10 +12,7 @@ const View = (props) => {
       onClick={() => props.openRoom(props.id)}
       active={props.active}
     >
-      <Image
-        avatar
-        src="https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/"
-      />
+      <Image avatar src={imageRoom} />
       <List.Content>
         <List.Header>{props.name}</List.Header>
       </List.Content>

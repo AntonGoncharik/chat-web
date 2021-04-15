@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header, Image } from 'semantic-ui-react';
 
+import imageUser from '../../assets/images/room.png';
 import './style.scss';
 
 const View = (props) => {
@@ -10,10 +11,7 @@ const View = (props) => {
         <Header size="tiny">{props.name}</Header>
       </div>
       <div className="header__avatar">
-        <Image
-          avatar
-          src="https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/"
-        />
+        <Image avatar src={`${props.avatar ? props.avatar : imageUser}`} />
         <div className="header__label">
           <Header size="tiny">{props.email}</Header>
         </div>

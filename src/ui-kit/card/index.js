@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 
+import { BASE_URL } from '../../config';
+import imageUser from '../../assets/images/user.png';
 import { Button, Input, TextArea, Modal } from '..';
 
 import './style.scss';
@@ -26,12 +28,14 @@ const View = (props) => {
           style={{
             backgroundImage:
               'url(' +
-              `${props.strAvatar ? props.strAvatar : props.avatar}` +
+              // eslint-disable-next-line prettier/prettier
+              `${props.strAvatar ? props.strAvatar : props.avatar ? `${BASE_URL}/${props.avatar}` : imageUser}` +
               ')',
           }}
         />
         <Image
-          src={`${props.strAvatar ? props.strAvatar : props.avatar}`}
+          // eslint-disable-next-line prettier/prettier
+          src={`${props.strAvatar ? props.strAvatar : props.avatar ? `${BASE_URL}/${props.avatar}` : imageUser}`}
           wrapped
           ui={false}
           className="card__image"

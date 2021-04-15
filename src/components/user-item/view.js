@@ -2,6 +2,8 @@
 import React from 'react';
 import { List, Image } from 'semantic-ui-react';
 
+import { BASE_URL } from '../../config';
+import imageUser from '../../assets/images/user.png';
 import './style.scss';
 
 const View = (props) => {
@@ -13,7 +15,7 @@ const View = (props) => {
     >
       <Image
         avatar
-        src="https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/"
+        src={`${props.avatar ? `${BASE_URL}/${props.avatar}` : imageUser}`}
       />
       <List.Content>
         <List.Header>{props.name}</List.Header>
